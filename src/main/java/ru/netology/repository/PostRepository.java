@@ -30,10 +30,12 @@ public class PostRepository {
   public Post save(Post post) {
     if (post.getId()==0 && postsMap.size()==0){
       idCounter.getAndIncrement();
+      post.setId(idCounter.longValue());
       postsMap.put(idCounter.get(),post);
     }
     if (post.getId()==0 && postsMap.size() > 0 || post.getId() > postsMap.size()){
       idCounter.getAndIncrement();
+      post.setId(idCounter.longValue());
       postsMap.put(idCounter.get(),post);
     }
     if (postsMap.containsKey(post.getId())){
